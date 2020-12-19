@@ -74,5 +74,21 @@
         android:textColor="#808080"
         android:textSize="16sp"
         android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/btnVerRegistros"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/btn_outline"
+        android:onClick="irRegistros"
+        android:text="Ver Registros"
+        android:textColor="#808080"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+
 </LinearLayout>
 
