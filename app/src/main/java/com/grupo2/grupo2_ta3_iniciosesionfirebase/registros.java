@@ -26,34 +26,40 @@ import com.squareup.picasso.Picasso;
 
 import android.content.Context;
 import android.content.ContextWrapper;
+import android.widget.Toast;
 
 public class registros extends AppCompatActivity {
     DatabaseReference db_reference;
+    Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registros);
-        db_reference = FirebaseDatabase.getInstance().getReference().child("Grupo 2");
+        context=getApplicationContext();
+        db_reference = FirebaseDatabase.getInstance().getReference().child("Grupo2");
+
         leerRegistros();
     }
 
     public void leerRegistros(){
+
         db_reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     mostrarRegistrosPorPantalla(snapshot);
-                }
+                }g
             }
             @Override
             public void onCancelled(DatabaseError error) {
-                System.out.println(error.toException());
+                Log.e("Error",error.toException().toString());
             }
         });
     }
 
     public void mostrarRegistrosPorPantalla(DataSnapshot snapshot){
+
         LinearLayout contTemp = (LinearLayout) findViewById(R.id.ContenedorTemp);
         LinearLayout contHum = (LinearLayout) findViewById(R.id.ContenedorHum);
         String tempVal = String.valueOf(snapshot.child("payload_fields").child("temperatura").getValue());

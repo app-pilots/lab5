@@ -31,7 +31,6 @@ public class PerfilUsuario extends AppCompatActivity {
     TextView txt_id, txt_name, txt_email, txt_phone;
     ImageView imv_photo;
     Button btn_logout;
-    DatabaseReference db_reference;
 
 
     @Override
@@ -58,14 +57,6 @@ public class PerfilUsuario extends AppCompatActivity {
         String photo = info_user.get("user_photo");
         Picasso.with(getApplicationContext()).load(photo).into(imv_photo);
 
-        //aqui inciar base de datos
-        iniciarBaseDeDatos();
-
-        // YA NO SE UTILIZAN las funciones leerTweets ni escribirTweets
-
-        //leerTweets();
-        //escribirTweets(info_user.get("user_name"));
-
     }
 
     public void cerrarSesion(View view) {
@@ -75,9 +66,7 @@ public class PerfilUsuario extends AppCompatActivity {
         intent.putExtra("msg", "cerrarSesion");
         startActivity(intent);
     }
-    public void iniciarBaseDeDatos(){
-        db_reference=FirebaseDatabase.getInstance().getReference().child("Grupo");
-    }
+
 
     public void irRegistros(View view){
         Intent intent = new Intent(this, registros.class);
@@ -86,36 +75,5 @@ public class PerfilUsuario extends AppCompatActivity {
 
 
 
-
-
-    // Esta parte del código no se utiliza para la práctica de laboratorio 5!!
-
-
-    //public void leerTweets(){
-        //db_reference.child("Grupo 2").child("tweets").addValueEventListener(new ValueEventListener() {
-                    //@Override
-                    //public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        //for(DataSnapshot dataSnapshot: snapshot.getChildren()) {
-                            //System.out.println(snapshot);
-                        //}
-                    //}
-                    //@Override
-                    //public void onCancelled(@NonNull DatabaseError error) {
-                        //System.out.println(error.toException());
-                    //}
-                //});
-            //}
-
-    //public void escribirTweets(String autor){
-        //String tweet="hola mundo firebase 2";
-        //String fecha="11/23/2020";
-        //Map<String,String> hola_tweet= new HashMap<String, String>();
-        //hola_tweet.put("autor",autor);
-        //hola_tweet.put("fecha",fecha);
-        //DatabaseReference tweets = db_reference.child("Grupo 2").child("Tweets");
-        //tweets.setValue(tweet);
-        //tweets.child(tweet).child("autor").setValue(autor);
-        //tweets.child(tweet).child("fecha").setValue(fecha);
-    //}
 
 }
