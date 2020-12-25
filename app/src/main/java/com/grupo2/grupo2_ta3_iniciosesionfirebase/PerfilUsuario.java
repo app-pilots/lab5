@@ -102,5 +102,11 @@ public class PerfilUsuario extends AppCompatActivity {
         tweets.child(tweet).child("fecha").setValue(fecha);
     }
 
+    public void irRegistros(View view){
+        Intent intent = new Intent(this, registros.class);
+        startActivity(intent);
+    }
+
+
 
 }
